@@ -9,38 +9,38 @@ import java.util.Arrays;
 
 @RestController
 public class CompraController {
-    private List<Compra> compras = new ArrayList<>();
+    private List<OrdenCompra> compras = new ArrayList<>();
     public CompraController(){
 
-        compras.add(new Compra(1,
+        compras.add(new OrdenCompra(1,
             Arrays.asList(new Cliente("15940700-4", "Angelo","Benvenuto")),
             Arrays.asList(new Producto(3001,"Juguete Gato",15990, 3), 
                           new Producto(3002, "Juguete Perro", 19990, 4)),
             "21-03-2026"
         ));
 
-        compras.add(new Compra(2,
+        compras.add(new OrdenCompra(2,
             Arrays.asList(new Cliente("9843565-4", "Maria","Quilobran")),
             Arrays.asList(new Producto(3001,"Juguete Gato",15990, 4), 
                           new Producto(3003, "Cama felpa Gato", 79990, 1)),
             "22-03-2026"
         ));
 
-        compras.add(new Compra(3,
+        compras.add(new OrdenCompra(3,
             Arrays.asList(new Cliente("8560050-8", "Miguel","Molina")),
             Arrays.asList(new Producto(3004,"Peine Perro",7990, 3), 
                           new Producto(3002, "Juguete Perro", 19990, 10)),
             "23-03-2026"
         ));
 
-        compras.add(new Compra(4,
+        compras.add(new OrdenCompra(4,
             Arrays.asList(new Cliente("19938883-1", "Josseline","Molina")),
             Arrays.asList(new Producto(3005,"Cama felpa Perro",95990, 1), 
                           new Producto(3002, "Juguete Perro", 19990, 2)),
             "24-03-2026"
         ));
 
-        compras.add(new Compra(5,
+        compras.add(new OrdenCompra(5,
             Arrays.asList(new Cliente("16787333-1", "Laura","Benvenuto")),
             Arrays.asList(new Producto(3003,"Cama felpa Gato",79990, 3), 
                           new Producto(3006, "Peine Gato", 6990, 1)),
@@ -49,30 +49,30 @@ public class CompraController {
 
     }
 
-    //MUESTRA TODAS LAS COMPRAS"
-    @GetMapping("/compras")
-    public List<Compra> obtenerCompras() {
+    //MUESTRA TODAS LAS ORDENES DE COMPRA"
+    @GetMapping("/listar_ordenes")
+    public List<OrdenCompra> obtenerCompras() {
         return compras;
     }
 
-    //MUESTRA DETALLE DE COMPRA POR ID COMPRA"
-    @GetMapping("/compra/{idCompra}")
-    public Compra buscarIdCompra(@PathVariable Integer idCompra) {
-        for (Compra compra : compras){
-            if (compra.getIdCompra() == idCompra){
+    //MUESTRA DETALLE DE COMPRA POR ID ORDEN DE COMPRA"
+    @GetMapping("/orden_de_compra/{idOrdenCompra}")
+    public OrdenCompra buscarIdOrdenCompra(@PathVariable Integer idOrdenCompra) {
+        for (OrdenCompra compra : compras){
+            if (compra.getIdOrdenCompra() == idOrdenCompra){
                 return compra;
             }
         }
         return null;
     }
 
-    //MUESTRA TOTAL A PAGAR POR ID COMPRA
-    @GetMapping("/totalpagar/{idCompra}")
-    public String totalPagar(@PathVariable int idCompra) {
+    //MUESTRA TOTAL A PAGAR POR ID ORDEN DE COMPRA
+    @GetMapping("/totalpagar/{idOrdenCompra}")
+    public String totalPagar(@PathVariable int idOrdenCompra) {
         Integer total = 0;
         String clientecompra = "";
-        for (Compra compra : compras){
-            if(compra.getIdCompra() == idCompra){
+        for (OrdenCompra compra : compras){
+            if(compra.getIdOrdenCompra() == idOrdenCompra){
                 for (Cliente cliente : compra.getCliente()){
                     clientecompra = cliente.getNombreCliente()+" "+cliente.getApellidoCliente();
                 }
@@ -89,11 +89,11 @@ public class CompraController {
         }
     }
 
-    //MUESTRA DETALLE COMPRAS DE CLIENTES POR RUT"
+    //MUESTRA DETALLE ORDEN DE COMPRAS DE CLIENTES POR RUT"
     @GetMapping("/cliente/{rut}")
-    public List<Compra> buscarCompraCliente(@PathVariable String rut) {
-        List<Compra> compraEncontrada = new ArrayList<>();
-        for (Compra compra : compras) {
+    public List<OrdenCompra> buscarCompraCliente(@PathVariable String rut) {
+        List<OrdenCompra> compraEncontrada = new ArrayList<>();
+        for (OrdenCompra compra : compras) {
             for(Cliente cliente : compra.getCliente()){
                 if (cliente.getRutCliente().equals(rut)) {
                     compraEncontrada.add(compra);
