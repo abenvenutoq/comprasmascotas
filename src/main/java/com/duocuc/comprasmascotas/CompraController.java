@@ -49,13 +49,13 @@ public class CompraController {
 
     }
 
-    // Endpoint para mostras todas las compras - ej: "/totalpagar/1"
+    //MUESTRA TODAS LAS COMPRAS"
     @GetMapping("/compras")
     public List<Compra> obtenerCompras() {
         return compras;
     }
 
-    // Endpoint para mostrar detalle compras por idCompra ej: "/compra/1"
+    //MUESTRA DETALLE DE COMPRA POR ID COMPRA"
     @GetMapping("/compra/{idCompra}")
     public Compra buscarIdCompra(@PathVariable Integer idCompra) {
         for (Compra compra : compras){
@@ -66,7 +66,7 @@ public class CompraController {
         return null;
     }
 
-    // Endpoint para mostrar total a pagar por ID Compra
+    //MUESTRA TOTAL A PAGAR POR ID COMPRA
     @GetMapping("/totalpagar/{idCompra}")
     public String totalPagar(@PathVariable int idCompra) {
         Integer total = 0;
@@ -89,7 +89,7 @@ public class CompraController {
         }
     }
 
-    // Endpoint para buscar compras por cliente ej: "/cliente/15940700-4"
+    //MUESTRA DETALLE COMPRAS DE CLIENTES POR RUT"
     @GetMapping("/cliente/{rut}")
     public List<Compra> buscarCompraCliente(@PathVariable String rut) {
         List<Compra> compraEncontrada = new ArrayList<>();
