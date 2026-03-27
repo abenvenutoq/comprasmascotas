@@ -47,6 +47,27 @@ public class CompraController {
             "25-03-2026"
         ));
 
+        compras.add(new OrdenCompra(6,
+            Arrays.asList(new Cliente("13239983-0", "Filomeno","Carvallo")),
+            Arrays.asList(new Producto(3003,"Cama felpa Gato",79990, 3), 
+                          new Producto(3006, "Peine Gato", 6990, 1)),
+            "26-03-2026"
+        ));
+
+        compras.add(new OrdenCompra(7,
+            Arrays.asList(new Cliente("19233765-4", "Felipe","Abello")),
+            Arrays.asList(new Producto(3003,"Cama felpa Gato",79990, 3), 
+                          new Producto(3006, "Peine Gato", 6990, 1)),
+            "27-03-2026"
+        ));
+
+        compras.add(new OrdenCompra(8,
+            Arrays.asList(new Cliente("21322088-K", "German","Carrasco")),
+            Arrays.asList(new Producto(3003,"Cama felpa Gato",79990, 3), 
+                          new Producto(3006, "Peine Gato", 6990, 1)),
+            "28-03-2026"
+        ));
+
     }
 
     //MUESTRA TODAS LAS ORDENES DE COMPRA"

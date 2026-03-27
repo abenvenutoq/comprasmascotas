@@ -19,6 +19,7 @@ public class OrdenCompra {
         this.fechaCreacion = fechaCreacion;
     }
 
+    //GET
     public Integer getIdOrdenCompra(){
         return idOrdenCompra;
     }
